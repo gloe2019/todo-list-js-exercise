@@ -5,18 +5,18 @@ const newTask = function (title, description) {
     title: title,
     description: description,
     complete: false,
+
+    logState: function () {
+      console.log(
+        `${this.title} has ${this.complete ? "" : "not "}been completed`
+      );
+    },
+
+    markCompleted: function () {
+      this.complete = true;
+    },
   };
   return task;
-};
-
-// Mark provided task as complete
-const completeTask = function (task) {
-  task.complete = true;
-};
-
-// Print out the provided task's details
-const logTaskState = function (task) {
-  console.log(`${task.title} has ${task.complete ? "" : "not "}been completed`);
 };
 
 // DRIVER CODE BELOW
@@ -28,7 +28,6 @@ const task1 = newTask(
 const task2 = newTask("Do Laundry", "😨");
 const tasks = [task1, task2];
 
-logTaskState(task1);
-completeTask(task1);
-logTaskState(task1);
-console.log(tasks);
+task1.logState();
+task1.markCompleted();
+task1.logState();
